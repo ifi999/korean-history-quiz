@@ -18,12 +18,17 @@
 아무거나 내줘
 오늘 공부
 한능검 문제
+랜덤으로
+섞어서
+골고루
+무작위로
 ```
 
 행동:
 
 ```text
-approved 문항에서 기본 10문제를 고르고 한 문제씩 출제한다.
+approved 문항에서 기본 10문제를 balanced random으로 고르고 한 문제씩 출제한다.
+파일 순서대로 내지 않고 source set, chapter, tag, questionType이 몰리지 않게 섞는다.
 ```
 
 ## Scope
@@ -76,6 +81,9 @@ OX
 짧게
 많이
 한 문제씩
+랜덤으로
+섞어서
+골고루
 ```
 
 ## Answer

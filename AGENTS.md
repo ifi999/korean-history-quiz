@@ -61,7 +61,7 @@ harness/skills/keyword-card-review/SKILL.md
 ```text
 1. `data/catalog/quiz-manifest.json`에서 approvedQuestionSets를 확인한다.
 2. 사용자가 범위를 지정하면 sourceId, chapterIds, tags, questionType으로 좁힌다.
-3. 범위가 없으면 approved 문항 전체에서 최대 10문제를 고른다.
+3. 범위가 없으면 approved 문항 전체에서 최대 10문제를 balanced random으로 고른다.
 4. 한 번에 한 문제씩 낸다.
 5. 사용자가 답하면 즉시 채점한다.
 6. 틀린 경우 오답 원인을 태그 단위로 짧게 정리한다.
@@ -69,6 +69,36 @@ harness/skills/keyword-card-review/SKILL.md
 ```
 
 `draft`, `ai_draft`, `needs_evidence`, `source_extraction_pending` 상태는 기본 채점형 퀴즈에 쓰지 않습니다. 사용자가 명시적으로 "초안도 보여줘", "파이널2 카드 복습"처럼 요청한 경우에만 검토용으로 사용합니다.
+
+## Question Selection Rules
+
+기본 출제는 파일 순서나 itemNumber 순서가 아닙니다. 사용자가 명시적으로 "순서대로 풀자"라고 하지 않는 한, Codex는 다음 방식으로 골고루 섞어 출제합니다.
+
+```text
+1. 요청 범위에 맞는 approved 문항 후보를 만든다.
+2. 후보를 sourceId, chapterIds, questionType, difficulty, tags 기준으로 묶는다.
+3. 전체 범위 요청이면 큰 세트가 작은 세트를 압도하지 않도록 source set을 먼저 균등하게 섞는다.
+4. 특정 범위 요청이면 해당 범위 안에서 pageNumber나 itemNumber가 연속되지 않게 섞는다.
+5. 같은 세션에서 이미 낸 currentQuestionId는 다시 내지 않는다.
+6. 오답 복습 요청일 때만 wrongQuestionIds 또는 weakTags를 우선한다.
+7. 후보가 부족할 때만 남은 문항을 재사용하거나 가까운 범위를 제안한다.
+```
+
+예시:
+
+```text
+"랜덤 문제" / "아무거나 내줘"
+  -> 파이널1 120문항만 앞에서부터 내는 방식이 아니라, 파이널1/전근대/근현대 승인 세트를 섞어 낸다.
+
+"전근대사 객관식 10문제"
+  -> premodern-5h 안에서 페이지 번호와 태그가 몰리지 않도록 섞어 낸다.
+
+"순서 문제"
+  -> chronology 유형 요청이다. 파일 순서대로 출제하라는 뜻으로 보지 않는다.
+
+"처음부터 순서대로"
+  -> 이 경우에만 itemNumber 순차 출제를 허용한다.
+```
 
 ## Data Status Rules
 

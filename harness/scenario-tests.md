@@ -43,6 +43,28 @@ Expected behavior:
 - 선택지가 있는 문제를 한 문제씩 낸다.
 - 사용자가 `3번`처럼 답하면 `grade-answer`로 이어진다.
 
+## Scenario 2-1. Balanced Random Quiz
+
+User:
+
+```text
+랜덤으로 골고루 10문제 내줘
+```
+
+Expected route:
+
+```text
+source-scope-picker -> start-quiz
+```
+
+Expected behavior:
+
+- approved 전체에서 고른다.
+- JSONL 파일 순서나 itemNumber 순서대로 내지 않는다.
+- `final-1` 문항 수가 가장 많더라도 `final-1`만 연속 출제하지 않는다.
+- 가능한 범위에서 source set, chapter, tag, questionType을 섞는다.
+- 같은 세션에서 이미 낸 문제는 다시 내지 않는다.
+
 ## Scenario 3. Fact Check
 
 User:

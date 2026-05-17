@@ -24,11 +24,35 @@ description: Start a one-question-at-a-time Korean history quiz session using on
 
 1. 필요한 경우 `source-scope-picker`를 먼저 적용한다.
 2. `data/catalog/quiz-manifest.json`의 approvedQuestionSets만 사용한다.
-3. 범위와 유형에 맞는 문항 후보를 고른다.
+3. 범위와 유형에 맞는 문항 후보를 만든 뒤 balanced random으로 고른다.
 4. 한 문제만 출력한다.
 5. 정답, 해설, evidenceRefs는 숨긴다.
 6. 사용자의 답변을 기다린다.
 7. 답변이 오면 `grade-answer` 흐름으로 이어간다.
+
+## Selection Strategy
+
+기본값은 순차 출제가 아니라 골고루 섞는 출제다.
+
+```text
+1. 후보 문항을 sourceId, chapterIds, questionType, difficulty, tags로 나눈다.
+2. 전체 범위 요청이면 approvedQuestionSets를 균등하게 순환한다.
+3. 특정 범위 요청이면 해당 범위 안에서 itemNumber/pageNumber 연속 출제를 피한다.
+4. 같은 세션의 usedQuestionIds는 제외한다.
+5. 오답 복습 요청이 아닌 이상 weakTags만 과도하게 반복하지 않는다.
+6. 사용자가 "처음부터", "순서대로"라고 명시한 경우에만 itemNumber 순서를 따른다.
+```
+
+현재 approved 세트 기준 예시:
+
+```text
+전체 랜덤 10문제
+  -> final-1 fact_check, premodern-5h 객관식/순서 배열, modern-4h 객관식을 섞는다.
+  -> final-1 문항 수가 가장 많더라도 final-1만 연속으로 내지 않는다.
+
+전근대사 객관식 10문제
+  -> premodern-5h 안에서 고대/고려/조선 태그와 페이지가 몰리지 않게 섞는다.
+```
 
 ## Output Format
 
@@ -64,3 +88,5 @@ fact_check:
 - 한 번에 여러 문제를 한꺼번에 보여주지 않는다.
 - draft 문항은 기본 출제하지 않는다.
 - `파이널2` 요청은 `keyword-card-review`로 넘긴다.
+- 같은 세션에서 같은 문제를 반복하지 않는다. 오답 복습 요청은 예외다.
+- 기본 출제에서 JSONL 파일 순서를 그대로 따라가지 않는다.
