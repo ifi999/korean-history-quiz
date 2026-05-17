@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "registeredAt": "2026-05-17",
+  "sources": [
+    {
+      "id": "modern-4h",
+      "title": "4시간 근현대사 수업자료",
+      "fileName": "4시간 근현대사 수업자료.pdf",
+      "rawPath": "sources/raw/4시간 근현대사 수업자료.pdf",
+      "sourceType": "lecture_pdf",
+      "defaultScope": "modern",
+      "pageCount": 19,
+      "status": "question_approved",
+      "notes": "근현대사 강의자료. 텍스트 기반 강의와 렌더링 이미지 전사에서 concept_note 초안 33개 생성. 19쪽 혼합 기출 페이지에서 multiple_choice 5개를 근거 Fact로 검증해 승인. 16쪽 지도 활동지만 스킵."
+    },
+    {
+      "id": "premodern-5h",
+      "title": "5시간 전근대사 수업자료",
+      "fileName": "5시간 전근대사 수업자료.pdf",
+      "rawPath": "sources/raw/5시간 전근대사 수업자료.pdf",
+      "sourceType": "lecture_pdf",
+      "defaultScope": "premodern",
+      "pageCount": 36,
+      "status": "question_approved",
+      "notes": "전근대사 강의자료. 텍스트 기반 강의와 손글씨 전사에서 concept_note 초안 24개와 self_test_card 초안 11개 생성. 혼합 기출 페이지 8쪽에서 multiple_choice/chronology 36개를 근거 Fact로 검증해 승인. 34쪽 도판 선택 문제만 스킵."
+    },
+    {
+      "id": "final-1",
+      "title": "파이널1",
+      "fileName": "파이널1.pdf",
+      "rawPath": "sources/raw/파이널1.pdf",
+      "sourceType": "final_pdf",
+      "defaultScope": "full-range",
+      "pageCount": 8,
+      "status": "registered",
+      "notes": "시험 직전 빈출 기출표현 O/X 정리. fact_check 문항화 대상."
+    },
+    {
+      "id": "final-2",
+      "title": "파이널2",
+      "fileName": "파이널2.pdf",
+      "rawPath": "sources/raw/파이널2.pdf",
+      "sourceType": "final_pdf",
+      "defaultScope": "full-range",
+      "pageCount": 10,
+      "status": "card_approved",
+      "notes": "키워드 TOP85 기출표현 정리. 문제형 PDF가 아니라 keyword_card로 정리했고, PDF 정리본 전사 자료이므로 웹 검증 없이 복습 카드로 승인했다. 채점형 문항으로 쓰려면 별도 문항 변환이 필요하다."
+    }
+  ]
+}

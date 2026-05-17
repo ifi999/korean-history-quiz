@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "chapters": [
+    {
+      "id": "premodern",
+      "label": "전근대사",
+      "parentId": null,
+      "order": 100,
+      "aliases": ["전근대", "전근대 한국사"],
+      "examWeight": "high"
+    },
+    {
+      "id": "prehistoric",
+      "label": "선사 시대",
+      "parentId": "premodern",
+      "order": 110,
+      "aliases": ["선사", "구석기", "신석기", "청동기", "철기"],
+      "examWeight": "high"
+    },
+    {
+      "id": "early-states",
+      "label": "초기 국가",
+      "parentId": "premodern",
+      "order": 120,
+      "aliases": ["고조선", "부여", "고구려", "옥저", "동예", "삼한"],
+      "examWeight": "high"
+    },
+    {
+      "id": "ancient",
+      "label": "고대",
+      "parentId": "premodern",
+      "order": 200,
+      "aliases": ["삼국", "가야", "남북국", "통일신라", "발해"],
+      "examWeight": "high"
+    },
+    {
+      "id": "goryeo",
+      "label": "고려",
+      "parentId": "premodern",
+      "order": 300,
+      "aliases": ["고려시대"],
+      "examWeight": "high"
+    },
+    {
+      "id": "joseon",
+      "label": "조선",
+      "parentId": "premodern",
+      "order": 400,
+      "aliases": ["조선시대"],
+      "examWeight": "high"
+    },
+    {
+      "id": "modern",
+      "label": "근현대사",
+      "parentId": null,
+      "order": 700,
+      "aliases": ["근대", "현대", "근현대"],
+      "examWeight": "high"
+    },
+    {
+      "id": "opening-port",
+      "label": "개항기",
+      "parentId": "modern",
+      "order": 710,
+      "aliases": ["개화기", "개항 이후"],
+      "examWeight": "high"
+    },
+    {
+      "id": "japanese-colonial",
+      "label": "일제강점기",
+      "parentId": "modern",
+      "order": 720,
+      "aliases": ["일제 강점기", "일제시대"],
+      "examWeight": "high"
+    },
+    {
+      "id": "liberation-and-modern-korea",
+      "label": "광복 이후 현대",
+      "parentId": "modern",
+      "order": 730,
+      "aliases": ["광복 이후", "현대사", "대한민국 정부 수립 이후"],
+      "examWeight": "high"
+    },
+    {
+      "id": "seasonal-customs",
+      "label": "세시 풍속",
+      "parentId": "premodern",
+      "order": 900,
+      "aliases": ["민속", "명절", "풍속"],
+      "examWeight": "medium"
+    }
+  ]
+}

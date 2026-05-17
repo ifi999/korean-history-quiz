@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "hist-neolithic-comb-pottery",
+      "title": "우리역사넷 - 신석기 시대와 빗살무늬 토기",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/eh_kk/teach/notebook/hacsoob/03/03.htm",
+      "trustLevel": "official_reference",
+      "usedFor": ["신석기 농경과 목축", "빗살무늬 토기", "민무늬 토기"]
+    },
+    {
+      "id": "hist-prehistory-textbook",
+      "title": "우리역사넷 - 선사 시대 생활과 청동기 문화",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/ta/print.do?levelId=ta_e71_0010_0010_0010_0010&whereStr=",
+      "trustLevel": "official_reference",
+      "usedFor": ["신석기 빗살무늬 토기", "청동기 반달 돌칼", "청동기 고인돌"]
+    },
+    {
+      "id": "ency-semilunar-stone-knife",
+      "title": "한국민족문화대백과 - 반달돌칼",
+      "publisher": "한국학중앙연구원",
+      "url": "https://encykorea.aks.ac.kr/Article/E0021456",
+      "trustLevel": "encyclopedic_reference",
+      "usedFor": ["청동기 반달돌칼"]
+    },
+    {
+      "id": "hist-iron-age-coins",
+      "title": "우리역사넷 - 철기 시대와 명도전",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_005_0060_0010_0030",
+      "trustLevel": "official_reference",
+      "usedFor": ["철기 시대 명도전"]
+    },
+    {
+      "id": "hist-coins-economic-activity",
+      "title": "우리역사넷 - 화폐와 경제 활동의 이중주",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_008_0030_0010_0020",
+      "trustLevel": "official_reference",
+      "usedFor": ["명도전", "반량전", "오수전"]
+    },
+    {
+      "id": "hist-buyeo-sachuldo",
+      "title": "우리역사넷 - 부여의 제가와 사출도",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/id/hm_003_0020",
+      "trustLevel": "official_reference",
+      "usedFor": ["부여 사출도", "제가"]
+    },
+    {
+      "id": "hist-early-state-festivals",
+      "title": "우리역사넷 - 부여의 영고, 고구려의 동맹, 예의 무천",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_025_0030_0020",
+      "trustLevel": "official_reference",
+      "usedFor": ["고구려 동맹", "동예 무천", "부여 영고"]
+    },
+    {
+      "id": "ency-dongye",
+      "title": "한국민족문화대백과 - 동예",
+      "publisher": "한국학중앙연구원",
+      "url": "https://encykorea.aks.ac.kr/Article/E0016693",
+      "trustLevel": "encyclopedic_reference",
+      "usedFor": ["동예 책화", "동예 풍습"]
+    },
+    {
+      "id": "hist-samhan-sodo",
+      "title": "우리역사넷 - 삼한의 소도와 천군",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/hm/print.do?levelId=hm_007_0020&tabId=01&treeId=020401&whereStr=",
+      "trustLevel": "official_reference",
+      "usedFor": ["삼한 소도", "천군"]
+    },
+    {
+      "id": "hist-gojoseon-bronze-culture",
+      "title": "우리역사넷 - 고조선의 국가 형성과 청동기 문화",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_004_0030_0010_0020_0020&whereStr=",
+      "trustLevel": "official_reference",
+      "usedFor": ["고조선", "지석묘", "비파형 동검"]
+    },
+    {
+      "id": "hist-gwanggaeto-stele",
+      "title": "우리역사넷 - 광개토왕의 영역확장",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_009_0040",
+      "trustLevel": "official_reference",
+      "usedFor": ["광개토대왕", "신라", "왜", "근초고왕", "고국원왕"]
+    },
+    {
+      "id": "hist-muryeong-damro",
+      "title": "우리역사넷 - 무령왕",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_10&levelId=kc_n100930",
+      "trustLevel": "official_reference",
+      "usedFor": ["무령왕", "22담로", "왕족 파견"]
+    },
+    {
+      "id": "hist-isabu-usanguk",
+      "title": "우리역사넷 - 이사부, 우산국을 정복하다",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/mobile/eh/view.do?levelId=eh_n0090_0010",
+      "trustLevel": "official_reference",
+      "usedFor": ["지증왕", "이사부", "우산국"]
+    },
+    {
+      "id": "hist-silla-beopheung",
+      "title": "우리역사넷 - 법흥왕의 체제 정비와 금관가야 정복",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/id/hm_011_0040",
+      "trustLevel": "official_reference",
+      "usedFor": ["법흥왕", "병부", "상대등", "금관가야"]
+    },
+    {
+      "id": "hist-unified-silla-balhae-overview",
+      "title": "우리역사넷 - 통일 신라와 발해 통치 체제",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/eh_kk/teach/tong/III/10.htm",
+      "trustLevel": "official_reference",
+      "usedFor": ["통일신라", "상수리 제도", "독서삼품과", "발해", "5경 15부 62주", "후삼국"]
+    },
+    {
+      "id": "hist-sinmun-kwallyojeon",
+      "title": "우리역사넷 - 신문왕대 관료전 지급과 녹읍 폐지",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/nh/view.do?levelId=nh_014_0020_0010_0070",
+      "trustLevel": "official_reference",
+      "usedFor": ["신문왕", "관료전", "녹읍 폐지"]
+    },
+    {
+      "id": "hist-silla-goryeo-culture-education",
+      "title": "우리역사넷 - 고대와 고려 문화·교육 정리",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/eh_kk/teach/tong/vi/53.html",
+      "trustLevel": "official_reference",
+      "usedFor": ["원효", "혜초", "삼국유사", "삼국사기", "국자감 7재", "양현고"]
+    },
+    {
+      "id": "hist-gang-gamchan-gwiju",
+      "title": "우리역사넷 - 강감찬의 귀주 대첩",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/hm/print.do?levelId=hm_048_0030",
+      "trustLevel": "official_reference",
+      "usedFor": ["강감찬", "귀주 대첩"]
+    },
+    {
+      "id": "hist-joseon-six-ministries",
+      "title": "우리역사넷 - 조선의 육조",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o301000",
+      "trustLevel": "official_reference",
+      "usedFor": ["6조", "육조직계제", "이조전랑"]
+    },
+    {
+      "id": "hist-joseon-seungjeongwon",
+      "title": "우리역사넷 - 승정원",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_30&levelId=kc_o300500",
+      "trustLevel": "official_reference",
+      "usedFor": ["승정원", "왕명 출납"]
+    },
+    {
+      "id": "hist-jeong-dojeon-jaesang",
+      "title": "우리역사넷 - 정도전의 재상론",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_073_0040",
+      "trustLevel": "official_reference",
+      "usedFor": ["정도전", "재상 중심 정치", "조선 건국 이념"]
+    },
+    {
+      "id": "hist-joseon-late-crops",
+      "title": "우리역사넷 - 조선 후기 농업과 상품 작물",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/mobile/eh/view.do?code=&levelId=eh_n0580_0010",
+      "trustLevel": "official_reference",
+      "usedFor": ["모내기법", "상품 작물", "담배", "인삼", "고추", "감자", "고구마"]
+    },
+    {
+      "id": "hist-jeong-jedu-yangming",
+      "title": "우리역사넷 - 정제두의 양명학",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/id/hm_110_0070",
+      "trustLevel": "official_reference",
+      "usedFor": ["정제두", "양명학", "강화학파"]
+    },
+    {
+      "id": "hist-park-jiwon-yeolha",
+      "title": "우리역사넷 - 연암 박지원, 열하까지 다녀오다",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/data/pdf/eh/eh_n0570_0010.pdf",
+      "trustLevel": "official_reference",
+      "usedFor": ["박지원", "열하일기", "양반전"]
+    },
+    {
+      "id": "hist-independence-club",
+      "title": "우리역사넷 - 독립협회와 만민공동회",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_40&levelId=kc_o404300",
+      "trustLevel": "official_reference",
+      "usedFor": ["독립협회", "만민공동회", "관민공동회", "헌의 6조", "황국협회"]
+    },
+    {
+      "id": "hist-independence-club-rights",
+      "title": "우리역사넷 - 독립협회·만민공동회 운동",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/nh/view.do?levelId=nh_041_0060_0030",
+      "trustLevel": "official_reference",
+      "usedFor": ["독립협회", "만민공동회", "민권 운동", "이권 수호"]
+    },
+    {
+      "id": "hist-modern-opening-overview",
+      "title": "우리역사넷 - 개항기와 국권 피탈 과정 정리",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/eh_kk/teach/tong/III/23.htm",
+      "trustLevel": "official_reference",
+      "usedFor": ["을사늑약", "헤이그 특사", "한일신협약", "13도 창의군", "대한자강회", "신민회"]
+    },
+    {
+      "id": "hist-national-movements-1920s",
+      "title": "우리역사넷 - 1920년대 민족 운동과 사회 운동",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/eh_kk/teach/tong/v/48.html",
+      "trustLevel": "official_reference",
+      "usedFor": ["신간회", "물산장려운동", "형평운동", "봉오동 전투", "청산리 대첩"]
+    },
+    {
+      "id": "hist-national-debt-repayment",
+      "title": "우리역사넷 - 국채보상운동",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/data/pdf/eh/eh_r0330_0010.pdf",
+      "trustLevel": "official_reference",
+      "usedFor": ["국채보상운동", "대한매일신보", "대구"]
+    },
+    {
+      "id": "hist-june-democracy",
+      "title": "우리역사넷 - 6·10 국민 대회 선언",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_151_0040",
+      "trustLevel": "official_reference",
+      "usedFor": ["4.13 호헌 조치", "6월 민주항쟁", "5.18 민주화운동", "6.29 선언"]
+    },
+    {
+      "id": "hist-kim-young-sam-government",
+      "title": "우리역사넷 - 김영삼 정부",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i501410",
+      "trustLevel": "official_reference",
+      "usedFor": ["김영삼 정부", "OECD 가입", "조선총독부 철거"]
+    },
+    {
+      "id": "hist-seasonal-customs",
+      "title": "우리역사넷 - 정월 대보름과 세시풍속",
+      "publisher": "국사편찬위원회",
+      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_034_0040_0030_0010_0010",
+      "trustLevel": "official_reference",
+      "usedFor": ["정월 대보름", "쥐불놀이", "부럼", "오곡밥", "삼짇날", "화전"]
+    }
+  ]
+}

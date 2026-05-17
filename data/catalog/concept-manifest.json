@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-17",
+  "draftConceptSets": [
+    {
+      "id": "modern-4h-concepts-draft",
+      "title": "4시간 근현대사 수업자료 개념 초안",
+      "path": "data/concepts/draft/modern-4h.concept-note.jsonl",
+      "sourceId": "modern-4h",
+      "pageRange": "1-15,17-18",
+      "conceptType": "concept_note",
+      "conceptCount": 33,
+      "scope": "modern",
+      "status": "draft",
+      "verificationStatus": "source_extracted",
+      "notes": "텍스트 강의 페이지와 렌더링 이미지 전사에서 출제 재료 개념을 추출했다. 승인 문제로 쓰려면 문항 변환과 채점 검수가 필요하다."
+    },
+    {
+      "id": "premodern-5h-concepts-draft",
+      "title": "5시간 전근대사 수업자료 개념 초안",
+      "path": "data/concepts/draft/premodern-5h.concept-note.jsonl",
+      "sourceId": "premodern-5h",
+      "pageRange": "2-35",
+      "conceptType": "concept_note",
+      "conceptCount": 24,
+      "scope": "premodern",
+      "status": "draft",
+      "verificationStatus": "source_extracted",
+      "notes": "텍스트 강의 페이지와 판독 가능한 손글씨에서 출제 재료 개념을 추출했다. 손글씨 1개 항목은 source_extracted_needs_review로 표시되어 있다."
+    }
+  ]
+}

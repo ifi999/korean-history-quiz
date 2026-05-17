@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-17",
+  "policy": "사진, 지도, 문화유산 도판처럼 이미지 자체를 보고 답을 선택하거나 판단해야 하는 항목만 스킵한다. 손글씨, 회전된 인쇄 텍스트, 화면·말풍선·신문 안의 텍스트는 먼저 전사를 시도한다.",
+  "skippedSets": [
+    {
+      "id": "modern-4h-skipped-image-based",
+      "path": "data/source-analysis/draft/modern-4h.source-analysis.jsonl",
+      "sourceId": "modern-4h",
+      "pages": [16],
+      "count": 1,
+      "status": "skipped_image_based"
+    },
+    {
+      "id": "premodern-5h-skipped-image-based",
+      "path": "data/source-analysis/draft/premodern-5h.skipped-image-based.jsonl",
+      "sourceId": "premodern-5h",
+      "pages": [34],
+      "count": 1,
+      "status": "skipped_image_based"
+    }
+  ],
+  "processedItemExtractionSets": [
+    {
+      "id": "modern-4h-item-review",
+      "path": "data/source-analysis/draft/modern-4h.source-analysis.jsonl",
+      "sourceId": "modern-4h",
+      "pages": [19],
+      "count": 1,
+      "status": "item_extracted"
+    },
+    {
+      "id": "premodern-5h-item-review",
+      "path": "data/source-analysis/draft/premodern-5h.item-review.jsonl",
+      "sourceId": "premodern-5h",
+      "pages": [4, 7, 10, 13, 19, 23, 28, 31],
+      "count": 8,
+      "status": "item_extracted"
+    }
+  ]
+}

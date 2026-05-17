@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "dimensions": {
+    "scope": [
+      {"id": "premodern", "label": "전근대사"},
+      {"id": "modern", "label": "근현대사"},
+      {"id": "full-range", "label": "전체범위"},
+      {"id": "final", "label": "파이널"}
+    ],
+    "topic": [
+      {"id": "politics", "label": "정치"},
+      {"id": "economy", "label": "경제"},
+      {"id": "society", "label": "사회"},
+      {"id": "culture", "label": "문화"},
+      {"id": "diplomacy", "label": "외교"},
+      {"id": "military", "label": "군사"},
+      {"id": "institution", "label": "제도"},
+      {"id": "person", "label": "인물"},
+      {"id": "organization", "label": "단체"},
+      {"id": "thought", "label": "사상"},
+      {"id": "religion", "label": "종교"},
+      {"id": "artifact", "label": "유물/문화재"},
+      {"id": "chronology", "label": "연표"},
+      {"id": "source", "label": "사료"},
+      {"id": "map", "label": "지도"},
+      {"id": "custom", "label": "풍속"}
+    ],
+    "questionType": [
+      {"id": "fact_check", "label": "사실 검증"},
+      {"id": "multiple_choice", "label": "객관식"},
+      {"id": "true_false", "label": "O/X"},
+      {"id": "short_answer", "label": "단답형"},
+      {"id": "fill_blank", "label": "빈칸"},
+      {"id": "source_analysis", "label": "사료 해석"},
+      {"id": "chronology", "label": "순서 배열"},
+      {"id": "matching", "label": "연결형"}
+    ],
+    "verificationStatus": [
+      {"id": "ai_draft", "label": "AI 초안"},
+      {"id": "source_extracted", "label": "자료 추출 완료"},
+      {"id": "source_extracted_needs_review", "label": "자료 추출 후 일부 확인 필요"},
+      {"id": "source_extraction_pending", "label": "항목별 추출 대기"},
+      {"id": "needs_evidence", "label": "근거 필요"},
+      {"id": "evidence_verified", "label": "근거 확인"},
+      {"id": "approved", "label": "출제 가능"},
+      {"id": "skipped_image_based", "label": "이미지 판단 문제 스킵"}
+    ],
+    "difficulty": [
+      {"id": 1, "label": "기본 개념"},
+      {"id": 2, "label": "대표 기출 수준"},
+      {"id": 3, "label": "비교/사료 단서 필요"},
+      {"id": 4, "label": "세부 연도/지엽 구분 필요"},
+      {"id": 5, "label": "고난도 또는 반복 오답 전용"}
+    ]
+  }
+}

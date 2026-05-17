@@ -1,0 +1,25 @@
+.DS_Store
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+.next/
+coverage/
+
+# Local environment
+.env
+.env.*
+
+# Raw study materials can be large or licensed.
+sources/raw/*
+!sources/raw/.gitkeep
+
+# Personal study history
+data/review/*
+!data/review/.gitkeep
+!data/review/README.md
+
+# Generated local runtime cache
+data/runtime/*
+!data/runtime/.gitkeep

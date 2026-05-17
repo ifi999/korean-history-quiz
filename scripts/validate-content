@@ -1,0 +1,186 @@
+#!/usr/bin/env sh
+set -eu
+
+ROOT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
+cd "$ROOT_DIR"
+
+if ! command -v jq >/dev/null 2>&1; then
+  echo "ERROR: jq is required for content validation." >&2
+  exit 1
+fi
+
+TMP_DIR="${TMPDIR:-/tmp}/korean-history-quiz-validate"
+mkdir -p "$TMP_DIR"
+
+JSONL_LIST="$TMP_DIR/jsonl-files.txt"
+find data \
+  -path 'data/review' -prune -o \
+  -path 'data/runtime' -prune -o \
+  -name '*.jsonl' -print | sort > "$JSONL_LIST"
+
+echo "Checking catalog JSON..."
+jq empty data/catalog/*.json data/evidence/*.json
+
+echo "Checking JSONL syntax..."
+while IFS= read -r file; do
+  [ -n "$file" ] || continue
+  jq -c empty "$file"
+done < "$JSONL_LIST"
+
+echo "Checking duplicate IDs..."
+DUP_IDS="$TMP_DIR/duplicate-ids.txt"
+while IFS= read -r file; do
+  [ -n "$file" ] || continue
+  jq -r 'select(.id != null) | .id' "$file"
+done < "$JSONL_LIST" | sort | uniq -d > "$DUP_IDS"
+if [ -s "$DUP_IDS" ]; then
+  cat "$DUP_IDS" >&2
+  echo "ERROR: duplicate IDs found." >&2
+  exit 1
+fi
+
+echo "Checking answer choice references..."
+BAD_ANSWERS="$TMP_DIR/bad-answer-choice.txt"
+while IFS= read -r file; do
+  [ -n "$file" ] || continue
+  jq -r '
+    select(.answer.choiceId? != null)
+    | .answer.choiceId as $answerId
+    | select(([.choices[]?.id] | index($answerId)) == null)
+    | "\(.id): answer.choiceId \($answerId) is not in choices"
+  ' "$file"
+done < "$JSONL_LIST" > "$BAD_ANSWERS"
+if [ -s "$BAD_ANSWERS" ]; then
+  cat "$BAD_ANSWERS" >&2
+  echo "ERROR: invalid answer choice reference." >&2
+  exit 1
+fi
+
+echo "Checking sourceRefs..."
+BAD_SOURCE_REFS="$TMP_DIR/bad-source-refs.txt"
+for file in data/questions/*/*.jsonl data/cards/*/*.jsonl data/concepts/*/*.jsonl data/source-analysis/draft/*.jsonl; do
+  [ -e "$file" ] || continue
+  jq -r '
+    select((.sourceRefs | type) != "array" or (.sourceRefs | length) == 0 or (.sourceRefs[0].sourceId == null) or (.sourceRefs[0].pageNumber == null))
+    | "\(.id): missing sourceRefs.sourceId or sourceRefs.pageNumber"
+  ' "$file"
+done > "$BAD_SOURCE_REFS"
+if [ -s "$BAD_SOURCE_REFS" ]; then
+  cat "$BAD_SOURCE_REFS" >&2
+  echo "ERROR: invalid sourceRefs." >&2
+  exit 1
+fi
+
+echo "Checking verificationStatus values..."
+BAD_VERIFICATION="$TMP_DIR/bad-verification-status.txt"
+while IFS= read -r file; do
+  [ -n "$file" ] || continue
+  jq -r --slurpfile taxonomy data/catalog/taxonomy.json '
+    ($taxonomy[0].dimensions.verificationStatus | map(.id)) as $allowed
+    | select(.verificationStatus != null)
+    | .verificationStatus as $verificationStatus
+    | select(($allowed | index($verificationStatus)) == null)
+    | "\(.id): unknown verificationStatus \($verificationStatus)"
+  ' "$file"
+done < "$JSONL_LIST" > "$BAD_VERIFICATION"
+if [ -s "$BAD_VERIFICATION" ]; then
+  cat "$BAD_VERIFICATION" >&2
+  echo "ERROR: unknown verificationStatus." >&2
+  exit 1
+fi
+
+echo "Checking approved question evidence references..."
+FACT_IDS="$TMP_DIR/fact-ids.txt"
+for file in data/facts/approved/*.jsonl; do
+  [ -e "$file" ] || continue
+  jq -r 'select(.id != null) | .id' "$file"
+done | sort > "$FACT_IDS"
+
+BAD_APPROVED_QUESTIONS="$TMP_DIR/bad-approved-questions.txt"
+for file in data/questions/approved/*.jsonl; do
+  [ -e "$file" ] || continue
+  jq -r '
+    select(.status != "approved" or .verificationStatus != "approved")
+    | "\(.id): approved question file contains status=\(.status), verificationStatus=\(.verificationStatus)"
+  ' "$file"
+done > "$BAD_APPROVED_QUESTIONS"
+if [ -s "$BAD_APPROVED_QUESTIONS" ]; then
+  cat "$BAD_APPROVED_QUESTIONS" >&2
+  echo "ERROR: approved question status mismatch." >&2
+  exit 1
+fi
+
+BAD_APPROVED_EVIDENCE="$TMP_DIR/bad-approved-evidence.txt"
+for file in data/questions/approved/*.jsonl; do
+  [ -e "$file" ] || continue
+  jq -r '
+    select((.evidenceRefs | type) != "array" or ([.evidenceRefs[]? | select(.type == "fact" and .factId != null)] | length) == 0)
+    | "\(.id): approved question must include at least one fact evidenceRef"
+  ' "$file"
+done > "$BAD_APPROVED_EVIDENCE"
+if [ -s "$BAD_APPROVED_EVIDENCE" ]; then
+  cat "$BAD_APPROVED_EVIDENCE" >&2
+  echo "ERROR: approved question missing fact evidence." >&2
+  exit 1
+fi
+
+FACT_REFS="$TMP_DIR/fact-refs.txt"
+for file in data/questions/approved/*.jsonl; do
+  [ -e "$file" ] || continue
+  jq -r '
+    . as $question
+    | .evidenceRefs[]?
+    | select(.type == "fact" and .factId != null)
+    | "\($question.id)\t\(.factId)"
+  ' "$file"
+done > "$FACT_REFS"
+
+BAD_FACT_REFS="$TMP_DIR/bad-fact-refs.txt"
+while IFS="$(printf '\t')" read -r question_id fact_id; do
+  [ -n "${question_id:-}" ] || continue
+  if ! grep -Fxq "$fact_id" "$FACT_IDS"; then
+    echo "$question_id: missing fact evidenceRef $fact_id"
+  fi
+done < "$FACT_REFS" > "$BAD_FACT_REFS"
+if [ -s "$BAD_FACT_REFS" ]; then
+  cat "$BAD_FACT_REFS" >&2
+  echo "ERROR: approved question references missing fact IDs." >&2
+  exit 1
+fi
+
+echo "Checking draft answer verification separation..."
+BAD_ANSWER_VERIFICATION="$TMP_DIR/bad-answer-verification.txt"
+for file in data/questions/draft/*.jsonl; do
+  [ -e "$file" ] || continue
+  jq -r '
+    select((.type == "multiple_choice" or .type == "chronology") and .answer.choiceId? != null)
+    | select(.verificationStatus == "source_extracted" and .answerVerificationStatus == null)
+    | "\(.id): draft objective question has source_extracted verificationStatus but no answerVerificationStatus"
+  ' "$file"
+done > "$BAD_ANSWER_VERIFICATION"
+if [ -s "$BAD_ANSWER_VERIFICATION" ]; then
+  cat "$BAD_ANSWER_VERIFICATION" >&2
+  echo "ERROR: answer verification status must be separated for draft objective questions." >&2
+  exit 1
+fi
+
+echo "Checking manifest counts..."
+MANIFEST_COUNTS="$TMP_DIR/manifest-counts.txt"
+jq -r '.approvedQuestionSets[]?, .draftQuestionSets[]? | [.id, .path, .questionCount] | @tsv' data/catalog/quiz-manifest.json > "$MANIFEST_COUNTS"
+jq -r '.draftConceptSets[]? | [.id, .path, .conceptCount] | @tsv' data/catalog/concept-manifest.json >> "$MANIFEST_COUNTS"
+jq -r '.approvedCardSets[]?, .draftCardSets[]? | [.id, .path, .cardCount] | @tsv' data/catalog/card-manifest.json >> "$MANIFEST_COUNTS"
+
+while IFS="$(printf '\t')" read -r id path expected; do
+  [ -n "${id:-}" ] || continue
+  if [ ! -f "$path" ]; then
+    echo "ERROR: manifest path missing: $id -> $path" >&2
+    exit 1
+  fi
+  actual="$(wc -l < "$path" | tr -d ' ')"
+  if [ "$actual" != "$expected" ]; then
+    echo "ERROR: manifest count mismatch: $id expected $expected, got $actual ($path)" >&2
+    exit 1
+  fi
+done < "$MANIFEST_COUNTS"
+
+echo "Content validation passed."
