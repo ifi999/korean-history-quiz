@@ -25,6 +25,7 @@ harness/orchestrator-guide.md
 harness/trigger-map.md
 harness/skills/start-quiz/SKILL.md
 harness/skills/source-scope-picker/SKILL.md
+harness/skills/source-grounded-drill/SKILL.md
 harness/skills/grade-answer/SKILL.md
 harness/skills/wrong-note-review/SKILL.md
 harness/skills/keyword-card-review/SKILL.md
@@ -50,6 +51,9 @@ harness/skills/keyword-card-review/SKILL.md
 
 파이널2, 키워드, 빈출표현, 암기카드, 외울 것
   -> keyword-card-review
+
+수업자료 기반, 내용 기반, 정해진 문항 말고, 주관식, 백지 테스트, 개념 설명, 꼬리질문
+  -> source-grounded-drill
 ```
 
 친구 학습 모드에서는 내부 파일명, JSONL, SQLite, manifest를 먼저 설명하지 않는다. 사용자의 요청이 `PDF 추가`, `문항 생성`, `검증`, `승격`, `하네스 수정`처럼 콘텐츠 관리나 개발 작업이면 학습 모드에서 빠져나와 일반 작업 모드로 처리한다.
@@ -69,6 +73,34 @@ harness/skills/keyword-card-review/SKILL.md
 ```
 
 `draft`, `ai_draft`, `needs_evidence`, `source_extraction_pending` 상태는 기본 채점형 퀴즈에 쓰지 않습니다. 사용자가 명시적으로 "초안도 보여줘", "파이널2 카드 복습"처럼 요청한 경우에만 검토용으로 사용합니다.
+
+## Source-Grounded Oral Drills
+
+사용자가 "정해진 문항 말고", "수업자료 내용 기반", "주관식", "백지 테스트", "개념 설명", "꼬리질문"처럼 요청하면 사전 생성된 approved 문항만 반복하지 말고 `source_extracted` concept_note에서 즉석 주관식 질문을 만든다.
+
+사용 가능 자료:
+
+```text
+data/concepts/draft/modern-4h.concept-note.jsonl
+data/concepts/draft/premodern-5h.concept-note.jsonl
+```
+
+사용 조건:
+
+```text
+verificationStatus == "source_extracted"
+```
+
+금지 조건:
+
+```text
+verificationStatus == "source_extracted_needs_review"
+uncertainSegments가 있는 항목
+needs_evidence 상태
+이미지 자체 판단이 필요한 항목
+```
+
+즉석 질문은 `title`, `summary`, `keyPoints`, `tags`, `sourceRefs`만 사용한다. 새로운 역사 사실이나 수업자료 밖의 인과관계를 만들어내지 않는다. 채점은 exact string matching이 아니라 핵심 명사, 관계, 빠진 keyPoint 기준으로 한다.
 
 ## Question Selection Rules
 

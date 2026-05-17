@@ -106,6 +106,28 @@ Expected behavior:
 - 웹 검증을 새로 하지 않는다.
 - 사용자가 핵심 용어를 맞히면 exact string이 아니어도 정답 또는 부분 정답으로 인정한다.
 
+## Scenario 3-2. Dynamic Source-Grounded Oral Drill
+
+User:
+
+```text
+정해진 문항 말고 근현대사 수업자료 내용 기반으로 주관식 질문해줘
+```
+
+Expected route:
+
+```text
+source-scope-picker -> source-grounded-drill
+```
+
+Expected behavior:
+
+- `data/questions/approved/*.jsonl`의 고정 문항만 반복하지 않는다.
+- `data/concepts/draft/modern-4h.concept-note.jsonl`에서 `verificationStatus == "source_extracted"`인 concept_note를 고른다.
+- `title`, `summary`, `keyPoints`만 사용해 즉석 질문을 만든다.
+- `source_extracted_needs_review`, `needs_evidence`, `uncertainSegments`가 있는 항목은 사용하지 않는다.
+- 채점은 핵심 명사와 관계, 빠진 keyPoint 기준으로 한다.
+
 ## Scenario 4. Short Answer
 
 Context:

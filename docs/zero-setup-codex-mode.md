@@ -108,6 +108,9 @@ harness/skills/*/SKILL.md
 근현대 수업자료 기반 빈칸 문제
   -> modern-4h source-recall approved 빈칸 문항
 
+정해진 문항 말고 수업자료 내용 기반 주관식
+  -> source_extracted concept_note에서 즉석 주관식 질문 생성
+
 3번
   -> 직전 문항 채점
 
@@ -127,6 +130,8 @@ approved = 근거가 연결되어 출제 가능한 상태
 ```
 
 수업자료 기반 `source-recall` 문항은 PDF에서 `source_extracted`로 정리된 concept_note의 summary/keyPoints만 사용해 만든 빈칸 회상형 문항입니다. 웹 검증은 하지 않으며, 판독 확인이 필요한 concept_note는 포함하지 않습니다.
+
+사용자가 고정 문항 반복이 아니라 내용 기반 학습을 원하면 Codex는 `source-grounded-drill` 흐름을 사용합니다. 이 흐름은 `source_extracted` concept_note의 `title`, `summary`, `keyPoints`에서 즉석 주관식 질문을 만들고, 수업자료 밖의 사실을 새로 만들지 않습니다.
 
 검증 흐름:
 

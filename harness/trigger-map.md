@@ -150,6 +150,33 @@ X
 현재 세션 오답을 우선 복습한다. 저장된 오답 파일은 사용자가 요청한 경우에만 확인한다.
 ```
 
+## Source-Grounded Oral Drill
+
+트리거:
+
+```text
+수업자료 기반
+내용 기반
+정해진 문항 말고
+미리 만든 문제 말고
+주관식
+단답
+백지 테스트
+개념 설명
+설명해볼게
+꼬리질문
+암기 확인
+개념에서 물어봐
+자료 내용으로 물어봐
+```
+
+행동:
+
+```text
+source_extracted concept_note의 title, summary, keyPoints만 사용해 즉석 주관식 질문을 만든다.
+source_extracted_needs_review, needs_evidence, 이미지 판단 항목은 제외한다.
+```
+
 ## Admin Or Content Work
 
 트리거:
