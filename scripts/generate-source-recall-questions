@@ -1,0 +1,112 @@
+#!/usr/bin/env sh
+set -eu
+
+ROOT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
+cd "$ROOT_DIR"
+
+if ! command -v jq >/dev/null 2>&1; then
+  echo "ERROR: jq is required." >&2
+  exit 1
+fi
+
+mkdir -p data/questions/approved data/facts/approved
+
+generate_questions() {
+  source_id="$1"
+  input="$2"
+  output="$3"
+
+  jq -c --arg source_id "$source_id" '
+    def recall_id: (.id | sub("-concept-"; "-recall-"));
+    def fact_id: ("fact-" + recall_id + "-source");
+    def blanked_summary:
+      .title as $title
+      | .summary as $summary
+      | ($summary | gsub($title; "_____")) as $blanked
+      | if $blanked == $summary then
+          "_____\n\n설명: " + $summary
+        else
+          $blanked
+        end;
+    def short_points:
+      (.keyPoints // [])[0:2] | join(" / ");
+
+    select(.sourceRefs[0].sourceId == $source_id)
+    | select(.verificationStatus == "source_extracted")
+    | {
+        id: recall_id,
+        status: "approved",
+        verificationStatus: "approved",
+        sourceGroundingStatus: "source_extracted",
+        type: "fill_blank",
+        prompt: ("빈칸에 들어갈 수업자료 기반 핵심 개념을 쓰세요.\n\n" + blanked_summary),
+        answer: {
+          text: .title,
+          acceptableAnswers: [.title],
+          keyTerms: ((.tags // [])[0:4])
+        },
+        explanation: (
+          .summary
+          + (if short_points == "" then "" else "\n핵심 포인트: " + short_points end)
+        ),
+        sourceRefs: .sourceRefs,
+        evidenceRefs: [
+          {
+            type: "fact",
+            factId: fact_id
+          }
+        ],
+        chapterIds: .chapterIds,
+        tags: (.tags + ["수업자료기반", "개념회상"]),
+        difficulty: 2,
+        createdFrom: "source_extracted_concept_note",
+        sourceConceptId: .id
+      }
+  ' "$input" > "$output"
+}
+
+generate_facts() {
+  source_id="$1"
+  input="$2"
+
+  jq -c --arg source_id "$source_id" '
+    def recall_id: (.id | sub("-concept-"; "-recall-"));
+    def fact_id: ("fact-" + recall_id + "-source");
+    def statement_text:
+      .summary
+      + (if ((.keyPoints // []) | length) == 0 then "" else " 핵심 포인트: " + ((.keyPoints // []) | join(" ")) end);
+
+    select(.sourceRefs[0].sourceId == $source_id)
+    | select(.verificationStatus == "source_extracted")
+    | {
+        id: fact_id,
+        status: "approved",
+        verificationStatus: "source_extracted",
+        statement: statement_text,
+        correctionHint: null,
+        chapterIds: .chapterIds,
+        tags: (.tags + ["수업자료기반", "개념회상"]),
+        sourceRefs: .sourceRefs,
+        supportingFactIds: [],
+        evidenceSourceIds: [],
+        sourceConceptId: .id
+      }
+  ' "$input"
+}
+
+generate_questions \
+  "modern-4h" \
+  "data/concepts/draft/modern-4h.concept-note.jsonl" \
+  "data/questions/approved/modern-4h.source-recall.jsonl"
+
+generate_questions \
+  "premodern-5h" \
+  "data/concepts/draft/premodern-5h.concept-note.jsonl" \
+  "data/questions/approved/premodern-5h.source-recall.jsonl"
+
+{
+  generate_facts "modern-4h" "data/concepts/draft/modern-4h.concept-note.jsonl"
+  generate_facts "premodern-5h" "data/concepts/draft/premodern-5h.concept-note.jsonl"
+} > "data/facts/approved/source-recall-facts.jsonl"
+
+echo "Generated source recall questions and facts."

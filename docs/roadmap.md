@@ -95,9 +95,11 @@
 - [x] `파이널1.pdf` 전체 1-120번 approved 문항 생성
 - [x] `파이널2.pdf` 전체 1-85번 keyword_card 초안 생성
 - [x] `파이널2` keyword_card 85개를 source_extracted 복습 카드로 승인
-- [x] `4시간 근현대사 수업자료.pdf` concept_note 30개 초안 생성
-- [x] `5시간 전근대사 수업자료.pdf` concept_note 23개 초안 생성
+- [x] `4시간 근현대사 수업자료.pdf` concept_note 33개 초안 생성
+- [x] `5시간 전근대사 수업자료.pdf` concept_note 24개 초안 생성
 - [x] `5시간 전근대사 수업자료.pdf` self_test_card 11개 초안 생성
+- [x] `4시간 근현대사 수업자료.pdf` source_extracted concept_note 33개를 빈칸 회상형 approved 문항으로 변환
+- [x] `5시간 전근대사 수업자료.pdf` source_extracted concept_note 23개를 빈칸 회상형 approved 문항으로 변환
 - [x] `파이널2` keyword_card 정리본 기준 source_extracted 처리
 - [ ] `파이널2` keyword_card 기반 빈칸/단답/연결형 문항 생성
 - [x] 객관식 문항 초안

@@ -34,16 +34,20 @@
           "normalizedPathPattern": "sources/normalized/modern-4h/page-XXX.md",
           "draftConceptsPath": "data/concepts/draft/modern-4h.concept-note.jsonl",
           "approvedQuestionsPath": "data/questions/approved/modern-4h.multiple-choice.jsonl",
+          "approvedSourceRecallPath": "data/questions/approved/modern-4h.source-recall.jsonl",
           "approvedFactsPath": "data/facts/approved/objective-question-answer-facts.jsonl",
+          "approvedSourceRecallFactsPath": "data/facts/approved/source-recall-facts.jsonl",
           "sourceAnalysisPath": "data/source-analysis/draft/modern-4h.source-analysis.jsonl",
           "draftConceptCount": 33,
-          "approvedQuestionCount": 5,
+          "approvedQuestionCount": 38,
+          "approvedMultipleChoiceCount": 5,
+          "approvedSourceRecallQuestionCount": 33,
           "skippedImageBasedCount": 1,
           "pendingItemReviewCount": 0,
-          "notes": "1-15쪽 텍스트 강의와 17-18쪽 렌더링 이미지 전사에서 concept_note 초안화. 16쪽 지도 활동지는 스킵, 19쪽 혼합 기출 페이지는 객관식 5개를 근거 Fact와 연결해 승인 완료."
+          "notes": "1-15쪽 텍스트 강의와 17-18쪽 렌더링 이미지 전사에서 concept_note 초안화 후 source_extracted 항목 33개를 빈칸 회상형 approved 문항으로 변환. 16쪽 지도 활동지는 스킵, 19쪽 혼합 기출 페이지는 객관식 5개를 근거 Fact와 연결해 승인 완료."
         }
       ],
-      "notes": "근현대 개념 초안화와 19쪽 기출 문항 승인 완료. 수업자료에서 확실히 추출한 개념은 source_extracted로 두고, 정답표 없던 기출 문항의 정답 번호는 근거 Fact로 검증해 approved로 승격했다. 이미지 자체 판단이 핵심인 16쪽만 스킵한다."
+      "notes": "근현대 개념 초안화, concept_note 기반 빈칸 회상형 문항 33개 승인, 19쪽 기출 문항 5개 승인 완료. 수업자료에서 확실히 추출한 개념은 웹 검증 없이 source_extracted 기반으로 문항화했고, 정답표 없던 기출 문항의 정답 번호는 근거 Fact로 검증해 approved로 승격했다. 이미지 자체 판단이 핵심인 16쪽만 스킵한다."
     },
     {
       "sourceId": "premodern-5h",
@@ -79,19 +83,23 @@
           "normalizedStructurePath": "sources/normalized/premodern-5h/structure-check.md",
           "draftConceptsPath": "data/concepts/draft/premodern-5h.concept-note.jsonl",
           "approvedQuestionsPath": "data/questions/approved/premodern-5h.multiple-choice.jsonl",
+          "approvedSourceRecallPath": "data/questions/approved/premodern-5h.source-recall.jsonl",
           "approvedFactsPath": "data/facts/approved/objective-question-answer-facts.jsonl",
+          "approvedSourceRecallFactsPath": "data/facts/approved/source-recall-facts.jsonl",
           "draftSelfTestCardsPath": "data/cards/draft/premodern-5h.self-test-card.jsonl",
           "skippedImageBasedPath": "data/source-analysis/draft/premodern-5h.skipped-image-based.jsonl",
           "itemReviewPath": "data/source-analysis/draft/premodern-5h.item-review.jsonl",
           "draftConceptCount": 24,
-          "approvedQuestionCount": 36,
+          "approvedQuestionCount": 59,
+          "approvedMultipleChoiceCount": 36,
+          "approvedSourceRecallQuestionCount": 23,
           "draftSelfTestCardCount": 11,
           "skippedImageBasedCount": 1,
           "pendingItemReviewCount": 0,
-          "notes": "텍스트 강의와 백지 테스트는 초안화, 16쪽 손글씨는 판독 가능한 범위에서 전사. 혼합 기출 8쪽은 객관식/순서 배열 36개를 근거 Fact와 연결해 승인 완료. 34쪽 도판 선택 문제만 스킵."
+          "notes": "텍스트 강의와 백지 테스트는 초안화, source_extracted concept_note 23개를 빈칸 회상형 approved 문항으로 변환. 16쪽 손글씨는 판독 가능한 범위에서 전사했지만 review 필요 항목이므로 자동 승인 제외. 혼합 기출 8쪽은 객관식/순서 배열 36개를 근거 Fact와 연결해 승인 완료. 34쪽 도판 선택 문제만 스킵."
         }
       ],
-      "notes": "전근대 개념, 백지 테스트 카드, 혼합 기출 문항 승인 완료. 수업자료에서 확실히 추출한 개념과 카드는 source_extracted, 손글씨 일부 불확실 항목은 source_extracted_needs_review로 둔다. 정답표 없던 기출 문항의 정답 번호는 근거 Fact로 검증해 approved로 승격했다."
+      "notes": "전근대 개념, 백지 테스트 카드, concept_note 기반 빈칸 회상형 문항 23개, 혼합 기출 문항 승인 완료. 수업자료에서 확실히 추출한 개념은 웹 검증 없이 source_extracted 기반으로 문항화했고, 손글씨 일부 불확실 항목은 source_extracted_needs_review로 두어 자동 승인에서 제외했다. 정답표 없던 기출 문항의 정답 번호는 근거 Fact로 검증해 approved로 승격했다."
     },
     {
       "sourceId": "final-1",

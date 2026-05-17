@@ -85,6 +85,27 @@ Expected behavior:
 - O/X와 틀린 부분 수정을 요구한다.
 - 답변 전 정답 문장과 correction을 숨긴다.
 
+## Scenario 3-1. Lecture Source Recall
+
+User:
+
+```text
+근현대사 수업자료 기반 빈칸 문제 내줘
+```
+
+Expected route:
+
+```text
+source-scope-picker -> start-quiz
+```
+
+Expected behavior:
+
+- `modern-4h.source-recall` approved fill_blank 문항을 우선 사용한다.
+- PDF에서 source_extracted로 정리된 concept_note 기반 문항만 사용한다.
+- 웹 검증을 새로 하지 않는다.
+- 사용자가 핵심 용어를 맞히면 exact string이 아니어도 정답 또는 부분 정답으로 인정한다.
+
 ## Scenario 4. Short Answer
 
 Context:

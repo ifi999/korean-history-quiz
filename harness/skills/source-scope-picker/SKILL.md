@@ -39,6 +39,7 @@ description: Interpret Korean natural-language quiz scope, source, type, and cou
 파이널1, OX, 오엑스, 참거짓 -> final-1 fact_check
 객관식, 선다형, 번호 -> multiple_choice
 순서, 배열, 연표 -> chronology
+빈칸, 단답, 개념, 수업자료 -> fill_blank or short_answer source-recall
 키워드, 빈출표현, 암기카드, 파이널2 -> keyword-card-review
 ```
 

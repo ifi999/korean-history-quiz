@@ -30,10 +30,12 @@
 ```text
 data/questions/approved/
   final-1.fact-check.jsonl
-  premodern-5h.fact-check.jsonl
   modern-4h.multiple-choice.jsonl
+  modern-4h.source-recall.jsonl
+  premodern-5h.multiple-choice.jsonl
+  premodern-5h.source-recall.jsonl
 
-data/cards/draft/
+data/cards/approved/
   final-2.keyword-card.jsonl
 ```
 
@@ -103,6 +105,9 @@ harness/skills/*/SKILL.md
 전근대 객관식 10문제
   -> premodern-5h approved 객관식/순서 배열
 
+근현대 수업자료 기반 빈칸 문제
+  -> modern-4h source-recall approved 빈칸 문항
+
 3번
   -> 직전 문항 채점
 
@@ -120,6 +125,8 @@ harness/skills/*/SKILL.md
 ```text
 approved = 근거가 연결되어 출제 가능한 상태
 ```
+
+수업자료 기반 `source-recall` 문항은 PDF에서 `source_extracted`로 정리된 concept_note의 summary/keyPoints만 사용해 만든 빈칸 회상형 문항입니다. 웹 검증은 하지 않으며, 판독 확인이 필요한 concept_note는 포함하지 않습니다.
 
 검증 흐름:
 

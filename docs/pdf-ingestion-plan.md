@@ -116,6 +116,14 @@ data/cards/approved/final-2.keyword-card.jsonl
 
 짧은 PDF는 페이지별로 JSONL을 나누지 않습니다. 페이지 번호는 각 문항의 `sourceRefs.pageNumber`에 기록합니다. 수백 쪽 규모의 대형 PDF에서만 챕터나 파트 단위 분할을 검토합니다.
 
+수업자료에서 확실히 추출된 `source_extracted` concept_note는 빈칸/단답 회상형 문항으로 변환할 수 있습니다. 이때 새 내용을 추론하지 않고 summary/keyPoints 표현만 사용합니다.
+
+```text
+scripts/generate-source-recall-questions
+```
+
+이 스크립트는 `source_extracted_needs_review` concept_note를 자동 승인 문항에서 제외합니다.
+
 ### 6. Validate
 
 검증 항목:

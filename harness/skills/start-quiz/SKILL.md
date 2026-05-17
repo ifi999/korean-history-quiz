@@ -83,6 +83,17 @@ fact_check:
 "{statement}"
 ```
 
+fill_blank / short_answer:
+
+```text
+수업자료 기반 개념 회상으로 진행할게요.
+문제 1입니다.
+
+{prompt}
+
+답은 핵심 용어나 사건명만 말해도 됩니다.
+```
+
 ## Constraints
 
 - 한 번에 여러 문제를 한꺼번에 보여주지 않는다.
@@ -90,3 +101,4 @@ fact_check:
 - `파이널2` 요청은 `keyword-card-review`로 넘긴다.
 - 같은 세션에서 같은 문제를 반복하지 않는다. 오답 복습 요청은 예외다.
 - 기본 출제에서 JSONL 파일 순서를 그대로 따라가지 않는다.
+- `modern-4h.source-recall`과 `premodern-5h.source-recall`은 수업자료에서 확실히 추출된 개념만 사용한 fill_blank 문항이다. 추측형 문항으로 취급하지 않는다.

@@ -59,6 +59,8 @@ skipped_image_based
 
 `source_extracted`는 외부 역사 검증을 생략한다는 뜻이지, 곧바로 채점형 승인 문항이라는 뜻은 아닙니다. 수업자료에서 직접 추출한 개념 카드, 백지 테스트, 지문 전사는 이 상태를 사용할 수 있습니다. `파이널1.pdf`처럼 답지가 없는 O/X 문항은 Codex가 참거짓을 새로 판정해야 하므로 `evidence_verified` 또는 `approved`까지 검증 근거를 연결해야 합니다.
 
+수업자료에서 확실히 추출된 `source_extracted` concept_note는 빈칸, 단답, 연결형 같은 회상형 문항으로 변환할 수 있습니다. 이 경우 정답은 summary/keyPoints 안의 표현만 사용하고, 문항에는 `sourceGroundingStatus: "source_extracted"`와 source_extracted Fact를 연결합니다. 손글씨나 판독 불확실성이 있는 `source_extracted_needs_review` concept_note는 자동 승인 문항으로 만들지 않습니다.
+
 객관식 기출 페이지에서 발문과 선택지를 정확히 전사했더라도 정답표가 없으면 문항의 `verificationStatus`는 `needs_evidence`로 둡니다. 이 경우 원문 추출 상태는 `questionExtractionStatus: source_extracted`, 정답 검증 상태는 `answerVerificationStatus: needs_evidence`로 분리합니다.
 
 웹 검증은 답안지가 없는 채점형 퀴즈나 내부 자료만으로 정답을 확정할 수 없는 경우에만 사용합니다. 정리본, 강의 표, 백지 테스트, 키워드 카드처럼 제공 PDF 내용을 그대로 구조화하는 데이터에는 웹 검증을 붙이지 않습니다.

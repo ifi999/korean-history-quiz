@@ -148,6 +148,32 @@ if [ -s "$BAD_FACT_REFS" ]; then
   exit 1
 fi
 
+echo "Checking source recall grounding..."
+CONCEPT_STATUS="$TMP_DIR/concept-status.txt"
+for file in data/concepts/*/*.jsonl; do
+  [ -e "$file" ] || continue
+  jq -r 'select(.id != null) | [.id, .verificationStatus] | @tsv' "$file"
+done > "$CONCEPT_STATUS"
+
+BAD_SOURCE_RECALL="$TMP_DIR/bad-source-recall.txt"
+for file in data/questions/approved/*.jsonl; do
+  [ -e "$file" ] || continue
+  jq -r 'select(.sourceConceptId? != null) | [.id, .sourceConceptId] | @tsv' "$file"
+done | while IFS="$(printf '\t')" read -r question_id concept_id; do
+  [ -n "${question_id:-}" ] || continue
+  concept_status="$(awk -F "$(printf '\t')" -v concept_id="$concept_id" '$1 == concept_id { print $2; found = 1; exit }' "$CONCEPT_STATUS")"
+  if [ -z "$concept_status" ]; then
+    echo "$question_id: missing sourceConceptId $concept_id"
+  elif [ "$concept_status" != "source_extracted" ]; then
+    echo "$question_id: sourceConceptId $concept_id has verificationStatus=$concept_status"
+  fi
+done > "$BAD_SOURCE_RECALL"
+if [ -s "$BAD_SOURCE_RECALL" ]; then
+  cat "$BAD_SOURCE_RECALL" >&2
+  echo "ERROR: source recall questions must reference source_extracted concept notes." >&2
+  exit 1
+fi
+
 echo "Checking draft answer verification separation..."
 BAD_ANSWER_VERIFICATION="$TMP_DIR/bad-answer-verification.txt"
 for file in data/questions/draft/*.jsonl; do

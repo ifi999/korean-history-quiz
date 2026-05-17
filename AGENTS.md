@@ -274,6 +274,10 @@ SQLite는 사용자가 알아야 하는 저장소가 아닙니다. 나중에 검
 
 `concept_note`는 강의자료에서 뽑은 출제 재료입니다. 곧바로 채점형 문제가 아닙니다.
 
+수업자료에서 확실히 추출된 `source_extracted` concept_note는 웹 검증 없이 `fill_blank` 또는 `short_answer` 회상형 문항으로 변환할 수 있습니다. 이때 새 역사 사실을 추론하지 말고 summary/keyPoints의 표현만 사용하며, 승인 문항에는 원본 concept_note와 source_extracted Fact를 연결합니다.
+
+`source_extracted_needs_review` concept_note는 자동 승인하지 않습니다. 손글씨, 흐림, 판독 불확실성이 해소된 뒤에만 채점형 문항으로 승격합니다.
+
 `keyword_card`는 키워드와 빈출표현을 저장합니다. 예를 들어 `파이널2.pdf`는 O/X 문항이 아니라 `keyword_card` 85개로 정리되어 있습니다.
 
 `self_test_card`는 백지 테스트나 암기표를 회상 카드로 바꾼 것입니다. 수업자료에서 그대로 추출한 경우 `source_extracted`를 사용할 수 있지만, 채점형 승인 문제로 쓰려면 문항 변환이 필요합니다.
@@ -295,6 +299,7 @@ SQLite는 사용자가 알아야 하는 저장소가 아닙니다. 나중에 검
 modern-4h
   4시간 근현대사 수업자료
   concept_note 33개
+  source_recall fill_blank approved 33개
   16쪽 지도 활동지는 skipped_image_based
   19쪽 혼합 기출 페이지는 multiple_choice approved 5개로 승격 완료
   발문/선택지는 source_extracted, 정답 번호는 근거 Fact로 evidence_verified
@@ -302,6 +307,8 @@ modern-4h
 premodern-5h
   5시간 전근대사 수업자료
   concept_note 24개
+  source_recall fill_blank approved 23개
+  손글씨 판독 확인 필요 concept_note 1개는 자동 승인 제외
   self_test_card 11개
   16쪽 손글씨는 source_extracted_needs_review 1개 포함
   34쪽 도판 선택 문제는 skipped_image_based

@@ -35,6 +35,21 @@
       "notes": "19쪽 혼합 기출 페이지에서 텍스트로 판독 가능한 현대사 정부 시기 문항을 추출하고, 정답 번호를 근거 Fact로 검증해 승인했다."
     },
     {
+      "id": "modern-4h-source-recall",
+      "title": "4시간 근현대사 수업자료 기반 개념 회상",
+      "path": "data/questions/approved/modern-4h.source-recall.jsonl",
+      "sourceId": "modern-4h",
+      "pageRange": "1-15,17-18",
+      "questionType": "fill_blank",
+      "questionCount": 33,
+      "scope": "modern",
+      "chapterIds": ["opening-port", "japanese-colonial", "liberation-and-modern-korea"],
+      "status": "approved",
+      "verificationStatus": "approved",
+      "sourceGroundingStatus": "source_extracted",
+      "notes": "수업자료에서 source_extracted로 정리된 concept_note 33개를 추측 없이 빈칸 회상형 문항으로 변환했다. 웹 검증 대상이 아니라 PDF 기반 개념 회상용이다."
+    },
+    {
       "id": "premodern-5h-multiple-choice",
       "title": "5시간 전근대사 혼합 기출 객관식/순서 배열",
       "path": "data/questions/approved/premodern-5h.multiple-choice.jsonl",
@@ -49,6 +64,21 @@
       "questionExtractionStatus": "source_extracted",
       "answerVerificationStatus": "evidence_verified",
       "notes": "혼합 기출 페이지 8쪽에서 텍스트로 판독 가능한 객관식과 순서 배열 문항을 추출하고, 정답 번호를 근거 Fact로 검증해 승인했다."
+    },
+    {
+      "id": "premodern-5h-source-recall",
+      "title": "5시간 전근대사 수업자료 기반 개념 회상",
+      "path": "data/questions/approved/premodern-5h.source-recall.jsonl",
+      "sourceId": "premodern-5h",
+      "pageRange": "2-15,17-35",
+      "questionType": "fill_blank",
+      "questionCount": 23,
+      "scope": "premodern",
+      "chapterIds": ["ancient", "goryeo", "joseon", "japanese-colonial"],
+      "status": "approved",
+      "verificationStatus": "approved",
+      "sourceGroundingStatus": "source_extracted",
+      "notes": "수업자료에서 source_extracted로 정리된 concept_note 23개를 추측 없이 빈칸 회상형 문항으로 변환했다. 손글씨 판독 확인이 필요한 1개 concept_note는 자동 승인에서 제외했다."
     }
   ],
   "draftQuestionSets": [
